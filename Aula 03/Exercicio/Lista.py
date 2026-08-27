@@ -7,37 +7,24 @@ class Lista:
     # Lista encadeada por ordem de crescente
     def add(self, valor):
         nodo = No(valor)
-
-        # ant = self.inicio
-        # aux = self.inicio.prox
-
-        if self.inicio is None:
+        
+        # Caso 1: Lista vazia ou novo elemento é menor que o primeiro
+        if self.inicio == None or nodo.dado < self.inicio.dado:
+            nodo.prox = self.inicio
             self.inicio = nodo
+            return
+        
+        # Caso 2: Inserção no meio ou no final da lista
+        ant = self.inicio
+        aux = self.inicio.prox
 
-        elif self.inicio.prox == None:
-            self.inicio.prox = nodo
-
-            ant = self.inicio
-            aux = self.inicio.prox
-
-            if ant.dado > aux.dado:
-                aux.dado, ant.dado = ant.dado, aux.dado
-
-        else:
-            ant = self.inicio
-            aux = self.inicio.prox
-
-            while aux.prox != None:
-                if nodo.dado < aux.dado:
-                    ant.prox = nodo
-                    nodo.prox = aux
-                    break
-                else:
-                    ant = aux
-                    aux = aux.prox
-            
-            if aux == None:
-                ant.prox = nodo
+        while aux != None and aux.dado < nodo.dado:
+            ant = aux
+            aux = aux.prox
+        
+        # Insere o novo nó entre 'ant' e 'aux'
+        nodo.prox = aux
+        ant.prox = nodo
 
     def imprimir(self):
         print(("-" * 20) + "Lista encadeada por ordem de chegada" + ("-" * 20))
