@@ -1,11 +1,14 @@
+from Livro import Livro
 from No import No
 
 class Pilha:
     def __init__(self):
         self.topo = None
 
-    def add(self, valor):
-        nodo = No(valor)
+    def add(self, titulo, autor):
+        nodo = Livro( titulo, autor)
+        # nodo = No(valor)
+        # print(valor.titulo + valor.autor)
 
         if self.topo:
             nodo.prox = self.topo
@@ -20,18 +23,31 @@ class Pilha:
             aux = self.topo
             txt = ""
             while aux:
-                txt += aux.dado + " - "
+                txt += aux.titulo + " - "
                 aux = aux.prox
             print( txt )
         print("---------------------------------------------")
     
-    def remover(self):
+    def remover(self, titulo):
         if not self.topo:
             print("Pilha vazia")
         else:
-            aux = self.topo.prox
-            self.topo = aux
-            del (aux)
+            posicao = 1
+            deletado = False
+            aux = self.topo
+            while aux:
+                if aux.titulo == titulo:
+                    aux = self.topo.prox
+                    self.topo = aux
+                    del (aux)
+                    deletado = True
+                else:
+                    posicao += 1
+                    aux = self.topo.prox
+            if deletado:
+                    print(f'Livro {titulo} deletado')
+            else:
+                print(f'Livro {placa} não encontrado na pilha' )
 
     def getPosicao(self, titulo):
         if not self.topo:

@@ -6,9 +6,9 @@ pilha = Pilha()
 def menu():
     print( "---------------------------------")
     print( "| 1) Adicionar livro na pilha   |")
-    print( "| 2) Folear livro               |")
-    print( "| 3) Imprimir pilha             |")
-    print( "| 4) Consultar posição na pilha |")
+    print( "| 2) Remover livro da pilha     |")
+    print( "| 3) Imprimir pilha de livros   |")
+    print( "| 4) Posição de um livro        |")
     print( "| 0) Sair                       |")
     print( "---------------------------------")
     return int( input( "Digite a opção desejada: ") )
@@ -19,9 +19,10 @@ while op != 0:
     if op == 1:
         titulo = input("Qual o titulo do livro: ")
         autor = input("Quem é o autor do livro: ")
-        pilha.add(Livro( autor, titulo))
+        pilha.add(titulo, autor)
     elif op == 2:
-        pilha.remover()
+        resposta = input("Qual livro deseja remover?")
+        pilha.remover(resposta)
     elif op == 3: 
         pilha.imprimir()
     elif op == 4:
