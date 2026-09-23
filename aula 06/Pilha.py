@@ -5,15 +5,13 @@ class Pilha:
     def __init__(self):
         self.topo = None
 
-    def add(self, titulo, autor):
-        nodo = Livro( titulo, autor)
-        # nodo = No(valor)
-        # print(valor.titulo + valor.autor)
+    def add(self, titulo, autor, qtdPag):
+        nodo = Livro( titulo, autor, qtdPag)
 
         if self.topo:
             nodo.prox = self.topo
         self.topo = nodo
-        self.imprimir()
+        print("Livro inserido com sucesso!")
 
     def imprimir(self):
         print("-------- Pilhas - Lifo --------")
@@ -23,31 +21,19 @@ class Pilha:
             aux = self.topo
             txt = ""
             while aux:
-                txt += aux.titulo + " - "
+                txt += "Título: " + aux.titulo + ", autor: " + aux.autor + ", qtd de páginas: " + str(aux.qtdPag) + "\n"
                 aux = aux.prox
             print( txt )
         print("---------------------------------------------")
     
-    def remover(self, titulo):
+    def remover(self):
         if not self.topo:
             print("Pilha vazia")
         else:
-            posicao = 1
-            deletado = False
             aux = self.topo
-            while aux:
-                if aux.titulo == titulo:
-                    aux = self.topo.prox
-                    self.topo = aux
-                    del (aux)
-                    deletado = True
-                else:
-                    posicao += 1
-                    aux = self.topo.prox
-            if deletado:
-                    print(f'Livro {titulo} deletado')
-            else:
-                print(f'Livro {placa} não encontrado na pilha' )
+            self.topo = aux.prox
+            print(f'Livro {aux.titulo} deletado')
+            del (aux)
 
     def getPosicao(self, titulo):
         if not self.topo:
@@ -62,8 +48,27 @@ class Pilha:
                     break
                 else:
                     posicao += 1
-                    aux = topo.prox
+                    aux = aux.prox
             if encontrou:
                 print(f'Livro {titulo} encontrado na posição {posicao}')
             else:
-                print(f'Livro {placa} não encontrado na pilha' )
+                print(f'Livro {titulo} não encontrado na pilha' )
+    
+    def getPosicaoAutor(self, autor):
+        if not self.topo:
+            print("Pilha vazia")
+        else:
+            posicao = 1
+            encontrou = False
+            aux = self.topo
+            while aux:
+                if aux.autor == autor:
+                    encontrou = True
+                    break
+                else:
+                    posicao += 1
+                    aux = aux.prox
+            if encontrou:
+                print(f'O autor {autor} possui livros nas posições: {posicao}')
+            else:
+                print(f'Autor {autor} não encontrado na pilha' )
