@@ -1,26 +1,32 @@
+from Carro import Carro
 from Fila import Fila
 
-fifo = Fila()
-fifo.imprimir()
-fifo.add( "João" )
-fifo.add( "Maria" )
-fifo.add( "Bibiana" )
-fifo.add( "José" )
-print("===============================")
-fifo.remover()
-fifo.remover()
-fifo.remover()
-fifo.add("Miguel")
+fila = Fila()
 
+def menu():
+    print( " ------------------------------")
+    print( "| 1) Adicionar carro na fila   |")
+    print( "| 2) Lavar Carro               |")
+    print( "| 3) Imprimir Fila             |")
+    print( "| 4) Consultar posição na fila |")
+    print( "| 5) Sair                      |")
+    print( " ------------------------------")
+    return int( input( "Digite a opção desejada: ") )
 
-#Exercício:
-# Construa um aplicativo para um lava-jato de carros
-# em que o carro possui placa e ano.
-# Devem ser construídos os seguintes métodos:
-# 1) Adicionar carro na fila
-# 2) Lavar carro (remover)
-# 3) Imprimir a fila de carros
-# 4) Retornar a posição na fila ao informar a placa
-# 5) Sair
-# Construa um menu de opções com as opções acima citadas
-# O aplicativo só termina quando o usuário escolher a opção 5
+op = 0
+while op != 5:
+    op = menu()
+    if op == 1:
+        modelo = input("Qual modelo do carro: ")
+        placa = input("Qual placa do carro: ")
+        fila.add( Carro( placa, modelo)  )
+    elif op == 2:
+        fila.remover()
+    elif op == 3: 
+        fila.imprimir()
+    elif op == 4:
+        fila.getPosicao( input("Digite a placa que deseja consultar: ") )
+    elif op == 5:
+        print("Bye-bye!!!")
+    else: 
+        print("Opção inválida")
