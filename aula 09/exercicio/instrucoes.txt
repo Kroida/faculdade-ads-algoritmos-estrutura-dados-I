@@ -1,0 +1,15 @@
+Construa um algoritmo para cadastrar carros, que
+serão armazenados em uma árvore binária, ordenados pela
+placa.
+
+Cada carro deve conter modelo, placa e ano.
+
+O menu deve ter as seguintes opções:
+
+1) Adicionar carro
+2) Imprimir carros em ordem
+3) Imprimir carros em pré-ordem
+4) Imprimir carros em pós-ordem
+5) Imprimir carros em ordem inversa
+6) Imprimir carros em ordem de nível na árvore
+0) Sair
