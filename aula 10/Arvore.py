@@ -43,7 +43,7 @@ class Arvore:
             print(raiz.placa, end= " - ")
             self.imprimir_reverso(raiz.esq)
 
-    def imprimirEmNível(self, raiz : Carro):
+    def imprimir_em_nivel(self, raiz : Carro):
         if raiz == None:
             print("Árvore vazia!")
             return

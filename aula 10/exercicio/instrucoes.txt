@@ -1,0 +1,4 @@
+Construa a opção 7) Busca por placa
+Esta opção deverá perguntar uma placa ao usuário
+e então percorrer a árvore procurando por esta placa
+quando encontrar, imprimir todos os dados deste carro
