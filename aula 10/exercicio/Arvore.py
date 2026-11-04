@@ -1,5 +1,5 @@
 from Carro import Carro
-# from Fila import Fila
+from Fila import Fila
 
 class Arvore:
     def __init__(self):
@@ -55,18 +55,21 @@ class Arvore:
             tam = fila.tamanho
             for _ in range(tam):
                 atual = fila.remover()
-                print(atual.dado, end = " - ")
+                print(atual)
                 if atual.esq != None:
                     fila.add(atual.esq)
                 if atual.dir != None:
                     fila.add(atual.dir)
             print()
 
-    def buscar_placa(self, raiz : Carro, placa):
+    def buscar_placa(self, raiz : Carro, placa: str):
         if raiz != None:
-            self.imprimir_em_ordem(raiz.esq)
-
             if raiz.placa == placa:
-                return print("Placa encontrada: " + raiz.placa)
+                return print(raiz)
 
-            self.imprimir_em_ordem(raiz.dir)            
+            if placa < raiz.placa:
+                return self.buscar_placa(raiz.esq, placa)
+
+            return self.buscar_placa(raiz.dir, placa)
+        else:
+            print("Árvore vazia")

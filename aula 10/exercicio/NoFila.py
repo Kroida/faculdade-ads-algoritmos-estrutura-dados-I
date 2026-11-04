@@ -1,4 +1,5 @@
 from Carro import Carro
+from No import No
 
 class NoFila:
     def __init__(self, noArvore : No):

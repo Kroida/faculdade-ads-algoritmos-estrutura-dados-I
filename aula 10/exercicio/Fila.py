@@ -8,7 +8,7 @@ class Fila:
         self.tamanho = 0
 
     def add(self, noArvore : Carro):
-        nodo = NoFila( noArvore )
+        nodo = NoFila(noArvore)
         if self.inicio is None:
             self.inicio = nodo
         else:
